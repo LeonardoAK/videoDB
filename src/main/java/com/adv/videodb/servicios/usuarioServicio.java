@@ -18,8 +18,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import com.adv.videodb.repositorios.UsuarioRepositorio;
 import java.util.Optional;
-import javax.transaction.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class usuarioServicio implements UserDetailsService {
@@ -61,6 +61,37 @@ public class usuarioServicio implements UserDetailsService {
             
             usuarioRepo.save(usuario);
         }       
+        return usuario;
+    }
+    
+    @Transactional
+    public void eliminarUsuario(String idUsuario){
+        
+        Usuario usuario = usuarioRepo.getById(idUsuario);
+        
+        usuarioRepo.delete(usuario);
+    }
+    
+    @Transactional(readOnly = true)
+    public Usuario getOne(String idUsuario){
+        return usuarioRepo.getOne(idUsuario);
+    }
+    
+    @Transactional(readOnly = true)
+    public List<Usuario> listarUsuarios(){
+        
+        List<Usuario> usuarios = new ArrayList();
+        
+        usuarios = usuarioRepo.findAll();
+        
+        return usuarios;
+    }
+    
+    @Transactional(readOnly = true)
+    public Usuario buscarUsuarioPorEmail(String email){
+        
+        Usuario usuario = usuarioRepo.buscarPorEmail(email);
+        
         return usuario;
     }
     
