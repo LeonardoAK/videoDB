@@ -22,7 +22,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class usuarioServicio implements UserDetailsService {
+public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private UsuarioRepositorio usuarioRepo;
@@ -91,6 +91,14 @@ public class usuarioServicio implements UserDetailsService {
     public Usuario buscarUsuarioPorEmail(String email){
         
         Usuario usuario = usuarioRepo.buscarPorEmail(email);
+        
+        return usuario;
+    }
+    
+    @Transactional(readOnly = true)
+    public Usuario buscarUsuarioPorNombre(String nombre){
+        
+        Usuario usuario = usuarioRepo.buscarPorNombre(nombre);
         
         return usuario;
     }

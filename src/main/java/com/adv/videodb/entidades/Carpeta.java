@@ -42,11 +42,12 @@ public class Carpeta {
     @Enumerated(EnumType.STRING)
     private Horario horario;
     private Collection<String> palabrasClave;
+    private String ubicacion;
 
     public Carpeta() {
     }
 
-    public Carpeta(String idCarpeta, String nombre, String link, Date fecha, int cantCam, int cantDron, Collection<Secretaria> secretarias, Programa programa, Collection<Funcionario> funcionarios, Lugar lugar, TipoDeCobertura tdc, Horario horario, Collection<String> palabrasClave) {
+    public Carpeta(String idCarpeta, String nombre, String link, Date fecha, int cantCam, int cantDron, Collection<Secretaria> secretarias, Programa programa, Collection<Funcionario> funcionarios, Lugar lugar, TipoDeCobertura tdc, Horario horario, Collection<String> palabrasClave, String ubicacion) {
         this.idCarpeta = idCarpeta;
         this.nombre = nombre;
         this.link = link;
@@ -60,6 +61,7 @@ public class Carpeta {
         this.tdc = tdc;
         this.horario = horario;
         this.palabrasClave = palabrasClave;
+        this.ubicacion = ubicacion;
     }
 
     public String getIdCarpeta() {
@@ -166,11 +168,18 @@ public class Carpeta {
         this.palabrasClave = palabrasClave;
     }
 
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
     @Override
     public String toString() {
-        return "Carpeta{" + "idCarpeta=" + idCarpeta + ", nombre=" + nombre + ", link=" + link + ", fecha=" + fecha + ", cantCam=" + cantCam + ", cantDron=" + cantDron + ", secretarias=" + secretarias + ", programa=" + programa + ", funcionarios=" + funcionarios + ", lugar=" + lugar + ", tdc=" + tdc + ", horario=" + horario + ", palabrasClave=" + palabrasClave + '}';
+        return "Carpeta{" + "idCarpeta=" + idCarpeta + ", nombre=" + nombre + ", link=" + link + ", fecha=" + fecha + ", cantCam=" + cantCam + ", cantDron=" + cantDron + ", secretarias=" + secretarias + ", programa=" + programa + ", funcionarios=" + funcionarios + ", lugar=" + lugar + ", tdc=" + tdc + ", horario=" + horario + ", palabrasClave=" + palabrasClave + ", ubicacion=" + ubicacion + '}';
     }
-    
-    
+
     
 }

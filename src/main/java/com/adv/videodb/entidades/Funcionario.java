@@ -4,6 +4,7 @@ package com.adv.videodb.entidades;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -15,8 +16,9 @@ public class Funcionario {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String idFuncionario;
     private String nombre;
+    private String apellido;
     private String cargo;
-    @OneToOne
+    @ManyToOne
     private Secretaria secretaria;
     @OneToOne
     private Foto foto;
@@ -24,9 +26,10 @@ public class Funcionario {
     public Funcionario() {
     }
 
-    public Funcionario(String idFuncionario, String nombre, String cargo, Secretaria secretaria, Foto foto) {
+    public Funcionario(String idFuncionario, String nombre, String apellido, String cargo, Secretaria secretaria, Foto foto) {
         this.idFuncionario = idFuncionario;
         this.nombre = nombre;
+        this.apellido = apellido;
         this.cargo = cargo;
         this.secretaria = secretaria;
         this.foto = foto;
@@ -46,6 +49,14 @@ public class Funcionario {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getCargo() {
@@ -74,7 +85,7 @@ public class Funcionario {
 
     @Override
     public String toString() {
-        return "Funcionario{" + "idFuncionario=" + idFuncionario + ", nombre=" + nombre + ", cargo=" + cargo + ", secretaria=" + secretaria + ", foto=" + foto + '}';
-    }  
-    
+        return "Funcionario{" + "idFuncionario=" + idFuncionario + ", nombre=" + nombre + ", apellido=" + apellido + ", cargo=" + cargo + ", secretaria=" + secretaria + ", foto=" + foto + '}';
+    }
+   
 }

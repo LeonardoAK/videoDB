@@ -8,6 +8,9 @@ import org.springframework.data.repository.query.Param;
 
 
 public interface UsuarioRepositorio extends JpaRepository<Usuario, String> {
-    @Query("SELECT a FROM admin a WHERE a.email = :email")
+    @Query("SELECT u FROM usuario u WHERE u.email = :email")
     public Usuario buscarPorEmail(@Param("email") String email);
+    
+    @Query("SELECT u FROM usuario u WHERE u.name = :name")
+    public Usuario buscarPorNombre(@Param("nombre") String nombre);
 }

@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -21,7 +21,7 @@ public class Secretaria {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String idSecretaria;
     private String nombre;
-    @OneToOne
+    @OneToMany
     private Collection<Funcionario> funcionarios;
     @ManyToMany
     private Collection<Programa> programas;

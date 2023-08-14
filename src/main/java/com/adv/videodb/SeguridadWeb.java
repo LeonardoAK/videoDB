@@ -1,6 +1,6 @@
 
 package com.adv.videodb;
-import com.adv.videodb.servicios.usuarioServicio;
+import com.adv.videodb.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -16,7 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SeguridadWeb extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    public usuarioServicio usuarioServicio;
+    public UsuarioServicio usuarioServicio;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
