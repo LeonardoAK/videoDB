@@ -42,7 +42,7 @@ public class Carpeta {
     @Enumerated(EnumType.STRING)
     private Horario horario;
     private Collection<String> palabrasClave;
-    private String ubicacion;
+    private String ubicacionMega;
 
     public Carpeta() {
     }
@@ -61,7 +61,7 @@ public class Carpeta {
         this.tdc = tdc;
         this.horario = horario;
         this.palabrasClave = palabrasClave;
-        this.ubicacion = ubicacion;
+        this.ubicacionMega = ubicacion;
     }
 
     public String getIdCarpeta() {
@@ -169,16 +169,16 @@ public class Carpeta {
     }
 
     public String getUbicacion() {
-        return ubicacion;
+        return ubicacionMega;
     }
 
     public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
+        this.ubicacionMega = ubicacion;
     }
 
     @Override
     public String toString() {
-        return "Carpeta{" + "idCarpeta=" + idCarpeta + ", nombre=" + nombre + ", link=" + link + ", fecha=" + fecha + ", cantCam=" + cantCam + ", cantDron=" + cantDron + ", secretarias=" + secretarias + ", programa=" + programa + ", funcionarios=" + funcionarios + ", lugar=" + lugar + ", tdc=" + tdc + ", horario=" + horario + ", palabrasClave=" + palabrasClave + ", ubicacion=" + ubicacion + '}';
+        return "Carpeta{" + "idCarpeta=" + idCarpeta + ", nombre=" + nombre + ", link=" + link + ", fecha=" + fecha + ", cantCam=" + cantCam + ", cantDron=" + cantDron + ", secretarias=" + secretarias + ", programa=" + programa + ", funcionarios=" + funcionarios + ", lugar=" + lugar + ", tdc=" + tdc + ", horario=" + horario + ", palabrasClave=" + palabrasClave + ", ubicacion=" + ubicacionMega + '}';
     }
 
     
