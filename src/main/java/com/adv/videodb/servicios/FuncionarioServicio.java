@@ -58,13 +58,21 @@ public class FuncionarioServicio {
 
             funcionario = respuesta.get();
 
-            Foto foto = fotoServicio.guardar(imagen);
-
             funcionario.setNombre(nombre);
             funcionario.setApellido(apellido);
             funcionario.setCargo(cargo);
             funcionario.setApellido(apellido);
-            funcionario.setFoto(foto);
+
+            if (imagen.getContentType().contains("image")) {
+                String idFoto = null;
+                if (funcionario.getFoto() != null) {
+                    idFoto = funcionario.getFoto().getIdImagen();
+                }
+                Foto foto = fotoServicio.actualizar(imagen, idFoto);
+                funcionario.setFoto(foto);
+            } else {
+                funcionario.setFoto(respuesta.get().getFoto());
+            }
 
             secreServicio.agregarFuncionario(secretaria.getIdSecretaria(), funcionario);
 
@@ -72,19 +80,19 @@ public class FuncionarioServicio {
 
             funcionarioRepo.save(funcionario);
         }
-        
+
         return funcionario;
-        
+
     }
-    
+
     @Transactional
     public void eliminarFuncionario(String idFuncionario) {
-        
+
         Funcionario funcionario = funcionarioRepo.getById(idFuncionario);
-        
+
         secreServicio.quitarFuncionario(funcionario.getSecretaria().getIdSecretaria(), funcionario);
         funcionarioRepo.delete(funcionario);
-         
+
     }
 
     private void validar(String nombre, String apellido, String cargo) throws MiException {
@@ -99,26 +107,25 @@ public class FuncionarioServicio {
             throw new MiException("El cargo no puede quedar vacio");
         }
     }
-    
-    
+
     @Transactional(readOnly = true)
     public Funcionario getOne(String idFuncionario) {
         return funcionarioRepo.getOne(idFuncionario);
     }
-    
+
     @Transactional(readOnly = true)
     public Funcionario buscarFuncionarioPorNombre(String nombre) {
         return funcionarioRepo.buscarPorNombre(nombre);
     }
-    
+
     @Transactional(readOnly = true)
     public Funcionario buscarFuncionarioPorApellido(String apellido) {
         return funcionarioRepo.buscarPorNombre(apellido);
     }
-    
+
     @Transactional(readOnly = true)
     public List<Funcionario> listarFuncionarios() {
         return funcionarioRepo.findAll();
     }
-    
+
 }
